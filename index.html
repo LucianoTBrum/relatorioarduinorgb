@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatorio trabalho pratico RGB</title>
+</head>
+<body>
+    <h1>Relatório do Projeto - Controle de led RGB</h1>
+
+    <nav>
+        <h2>SUMÁRIO</h2>
+        <ul>
+            <li><a href="#introducao">Introdução</a></li>
+            <li><a href="#objetivos">Objetivos</a></li>
+            <li><a href="#materiais">Materiais Utilizados</a></li>
+            <li><a href="#diagrama">Diagrama do Circuito</a></li>
+            <li><a href="#codigo">Código Fonte</a></li>
+            <li><a href="#procedimentos">Procedimentos</a></li>
+            <li><a href="#resultados">Resultados</a></li>
+            <li><a href="#discussao">Discussão</a></li>
+            <li><a href="#conclusao">Conclusão</a></li>
+            <li><a href="#referencias">Referências</a></li>
+        </ul>
+    </nav>
+
+    <section id="introducao">
+    <h2>1. Introdução</h2>
+    <p>Este Relatório descreve o projeto de um controle do led RGB com a utilização de um potenciometro em um arduino, com o objetivo de desenvolver habilidades em eletronica e programação.</p>
+    </section>
+
+    
+    <section id="objetivos">
+    <h2>2. Objetivos</h2>
+    <p>O principal objetivo é fazer o controle das cores do led com a utilização do potenciometro em um microcontrolador Arduino.</p>
+    </section>
+
+
+    <section id="materiais">
+        <h2>3. Materiais utilizados</h2>
+        <ul type="square">
+            <li>Arduino</li>
+            <li>3 Potenciometros</li>
+            <li>3 Resistores (220Ω)</li>
+            <li>Protoboard</li>
+            <li>Fios de conexão</li>
+        </ul>
+    </section>
+
+
+    <section id="diagrama">
+        <h2>4. Diagrama do circuito</h2>
+        <p>Abaixo está o diagrama do circuito projetado no Tinkercad:</p>
+    </section>
+
+
+    <section id="codigo">
+        <h2>5. Código Fonte</h2>
+        <pre>
+            const int potPinR = A0;
+            const int potPinG = A1;
+            const int potPinB = A2;
+            
+            const int ledPinR = 9;
+            const int ledPinG = 10;
+            const int ledPinB = 11;
+            
+            void setup() {
+              pinMode(ledPinR, OUTPUT);
+              pinMode(ledPinG, OUTPUT);
+              pinMode(ledPinB, OUTPUT);
+              Serial.begin(9600);
+            }
+            
+            void loop() {
+              int potValueR = analogRead(potPinR);
+              int potValueG = analogRead(potPinG);
+              int potValueB = analogRead(potPinB);
+            
+              int ledValueR = map(potValueR, 0, 1023, 0, 255);
+              int ledValueG = map(potValueG, 0, 1023, 0, 255);
+              int ledValueB = map(potValueB, 0, 1023, 0, 255);
+            
+              Serial.print("(");
+              Serial.print(ledValueR);
+                Serial.print(",");
+              Serial.print(ledValueG);
+                Serial.print(",");
+              Serial.print(ledValueB);
+              Serial.println(")");
+              
+              analogWrite(ledPinR, ledValueR);
+              analogWrite(ledPinG, ledValueG);
+              analogWrite(ledPinB, ledValueB);
+            
+              delay(10);
+            }
+        </pre>
+    </section>
+
+    <section id="procedimentos">
+        <h2>6. Procedimentos</h2>
+        <p>Os potenciometros e o led RGB foram conectados aos pinos digitais e analogicos do Arduino conforme o diagrama, e o código foi carregado na placa.</p>
+    </section>
+
+    <section id="resultados">
+        <h2>7. Resultados</h2>
+        <p>O led rgb acendeu conforme o esperado, alternando as cores conforme os valores fossem alterados com a utilização dos 3 potenciometros.</p>
+    </section>
+
+    <section id="discussao">
+        <h2>8. Discussão</h2>
+        <p>O funcionamento do circuito aconteceu de forma satisfatoria e conforme esperado, alternando suas cores e intensidade.</p>
+    </section>
+
+    <section id="conclusao">
+        <h2>9. Conclusão</h2>
+        <p>O projeto foi bem sucedido, permitindo a pratica dos conceitos de eletronica e programação.</p>
+    </section>
+
+    <section id="referencias">
+        <h2>10. Referências</h2>
+        <p>Documentação do Arduino e materias utilizados no projeto.</p>
+    </section>
+
+        <h2>Perguntas</h2>
+        <ol>
+            <li>Qual o valor das resistências utilizadas? <strong>220Ω</strong></li>
+            <li>Qual o valor da corrente elétrica de um Led RGB? <strong>60mA</strong>, 20 para cada canal, vermelho, berde e azul.</li>
+        </ol>
+
+</body>
+</html>
+
+<footer>
+    <p>Relatório elaborado por [Leonardo, André, Luciano].</p>
+    <p>Diciplina: Desenvolvimento de sistemas de informação</p>
+    <p>Laboratório C37. 30/09/2024 </p>
+    </footer>
